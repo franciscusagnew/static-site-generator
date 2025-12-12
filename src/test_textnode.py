@@ -3,24 +3,25 @@ from textnode import TextNode, TextType, text_node_to_html_node
 
 class TestTextNode(unittest.TestCase):
     def test_eq(self):
-        print(f"Running test_eql()...")
+        print("Running test_eql...")
         node = TextNode("This is a text node", TextType.BOLD)
         node2 = TextNode("This is a text node", TextType.BOLD)
         self.assertEqual(node, node2)
         
     def test_url(self):
-        print(f"Running test_url()...")
+        print("Running test_url...")
         node = TextNode("This is a text node", TextType.BOLD, "http://website.url")
         node2 = TextNode("This is a text node", TextType.BOLD)
         self.assertNotEqual(node, node2)
         
     def test_type(self):
-        print(f"Running test_type()...")
+        print("Running test_type...")
         node = TextNode("This is a link node", TextType.LINK)
         node2 = TextNode("This is a bold text node", TextType.BOLD)
         self.assertNotEqual(node, node2)
         
     def test_text(self):
+        print("Running test_test...")
         node = TextNode("This is a text node", TextType.TEXT)
         html_node = text_node_to_html_node(node)
         self.assertEqual(html_node.tag, None)
