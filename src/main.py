@@ -6,7 +6,8 @@ from copy_files import copy_files
 from content_generator import generate_pages
 
 dir_path_static = "./static"
-dir_path_public = "./public"
+# dir_path_public = "./public"
+dir_path_public = "./docs"
 dir_path_content = "./content"
 template_path = "./template.html"
 
