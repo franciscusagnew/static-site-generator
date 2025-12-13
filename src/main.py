@@ -1,8 +1,31 @@
-# print("Hello world")
-from textnode import TextNode, TextType
+import os
+import sys
+import shutil
+
+from copy_files import copy_files
+from content_generator import generate_pages
+
+dir_path_static = "./static"
+dir_path_public = "./public"
+dir_path_content = "./content"
+template_path = "./template.html"
+
 
 def main():
-  node = TextNode("This is some anchor text", TextType.LINK, "https://www.boot.dev")
-  print(node)
-  
-main()
+    if len(sys.argv) > 1:
+        basepath = sys.argv[1]
+    else:
+        basepath = "/"
+    print("Deleting public directory...")
+    if os.path.exists(dir_path_public):
+        shutil.rmtree(dir_path_public)
+
+    print("Copying static files to public directory...")
+    copy_files(dir_path_static, dir_path_public)
+
+    print("Generating content...")
+    generate_pages(dir_path_content, template_path, dir_path_public, basepath)
+
+
+if __name__ == "__main__":
+    main()
